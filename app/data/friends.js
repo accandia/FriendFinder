@@ -1,4 +1,4 @@
-// Data structure that will store the friends data
+// Friends Array. Based on hardcoded existing friends, user will get friends sugguestion based on how close his core is to existing friends.
 var friendsArray = [
 	{
 		name: 'Alicia Vikander',

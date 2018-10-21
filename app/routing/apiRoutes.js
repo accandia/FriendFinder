@@ -1,49 +1,45 @@
-// Pull in required dependencies
-var path = require('path');
+// ===============================================================================
+// LOAD DATA
+// We are linking our routes to a series of "data" sources.
 
-// Import the list of friend entries
+var path = require('path');
 var friends = require('../data/friends.js');
 
-// Export API routes
+// ROUTING
 module.exports = function(app) {
-	// console.log('___ENTER apiRoutes.js___');
+// API GET Requests
+  // Below code handles when users "visit" a page.
+  // In each of the below cases when a user visits a link
+  // (ex: localhost:PORT/api/admin... they are shown a JSON of the data in the table)
+  // ---------------------------------------------------------------------------
 
-	// Total list of friend entries
 	app.get('/api/friends', function(req, res) {
 		res.json(friends);
 	});
 
-	// Add new friend entry
+// API POST Requests
+  // Below code handles when a user submits a form and thus submits data to the server.
+  // In each of the below cases, when a user submits form data (a JSON object)
+  // ...the JSON is pushed to the appropriate JavaScript array
+  // (ex. User fills out a reservation request... this data is then sent to the server...
+  // Then the server saves the data to the tableData array)
+  // ---------------------------------------------------------------------------
 	app.post('/api/friends', function(req, res) {
-		// Capture the user input object
 		var userInput = req.body;
-		// console.log('userInput = ' + JSON.stringify(userInput));
-
 		var userResponses = userInput.scores;
-		// console.log('userResponses = ' + userResponses);
-
-		// Compute best friend match
 		var matchName = '';
 		var matchImage = '';
-		var totalDifference = 10000; // Make the initial value big for comparison
+		var totalDifference = 10000; 
 
-		// Examine all existing friends in the list
+		// compare the difference between current user's scores against those from other users, question by question. Add up the differences to calculate the `totalDifference`.
 		for (var i = 0; i < friends.length; i++) {
-			// console.log('friend = ' + JSON.stringify(friends[i]));
-
-			// Compute differenes for each question
 			var diff = 0;
 			for (var j = 0; j < userResponses.length; j++) {
 				diff += Math.abs(friends[i].scores[j] - userResponses[j]);
 			}
-			// console.log('diff = ' + diff);
 
 			// If lowest difference, record the friend match
 			if (diff < totalDifference) {
-				// console.log('Closest match found = ' + diff);
-				// console.log('Friend name = ' + friends[i].name);
-				// console.log('Friend image = ' + friends[i].photo);
-
 				totalDifference = diff;
 				matchName = friends[i].name;
 				matchImage = friends[i].photo;
