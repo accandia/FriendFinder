@@ -1,0 +1,51 @@
+ body {
+ 	width: 85%;
+	margin: 0px auto; 
+
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+ }
+
+ header {
+ 	height: 120px;
+ }
+
+ header > nav {
+ 	height: 100%;
+ }
+
+ main {
+ 	flex: 1 0 auto;
+ }
+
+ main h1 {
+ 	font-weight: bold;
+ }
+
+  main h5 {
+ 	font-weight: 100;
+ }
+
+#logo-icon {
+	margin-left: 55px;
+	margin-top: 25px;
+}
+
+#logo {
+ 	margin-left: 55px;
+ 	margin-top: 25px;
+ }
+
+ #head-nav-links {
+ 	margin-right: 55px;
+ 	margin-top: 25px;
+ }
+
+.mainpanel{
+	margin: 55px;
+}
+
+ #mainpanel-content {
+ 	margin: 55px;
+ }
