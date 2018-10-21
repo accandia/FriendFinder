@@ -23,4 +23,4 @@ This full-stack site will take in results from your users' surveys, then compare
     - server.js
   ```
 
-
+Utilized the Materialize CSS framework to make the UI good looking. 
